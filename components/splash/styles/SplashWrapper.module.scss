@@ -1,0 +1,53 @@
+@import "../../Variables.module.scss";
+
+nav.splashHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  width: 100vw;
+  height: 55px;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  background-color: white;
+}
+
+section#authModalWrapper {
+  width: 100vw;
+  height: 100vh;
+  z-index: 11;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: opacity 0.3s;
+
+  #authModal {
+    width: 600px;
+    height: 100vh;
+    background-color: white;
+    margin-left: 100vw;
+    transition: margin-left 0.3s;
+    visibility: hidden;
+    pointer-events: none;
+
+    h1 {
+      color: $colorPrimary;
+      translate: rotate(90deg);
+      font-size: 20rem;
+      position: absolute;
+      margin: 0 auto;
+    }
+  }
+
+  .open {
+    background-color: rgb(0, 0, 0, 0.7);
+
+    #authModal {
+      margin-left: calc(100vw - 600px);
+    }
+  }
+}
