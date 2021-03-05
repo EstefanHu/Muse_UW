@@ -3,7 +3,34 @@ import React from 'react';
 import styles from './styles/SplashWrapper.module.scss';
 
 const SplashWrapper = ({ children }) => {
-  const [isAuthorizing, setIsAuthorizing] = React.useState(false);
+  const [isAuthorizing, setIsAuthorizing] = React.useState(null)
+
+  React.useEffect(() => {
+    const modal = document.getElementById('authModalWrapper')
+
+    const closeModal = e => {
+      if (e.target === modal) {
+        modal.classList.remove(styles.open);
+        setTimeout(() => {
+          setIsAuthorizing(null)
+        }, 500);
+      }
+    }
+
+    modal.addEventListener('click', closeModal);
+
+    return () => modal.removeEventListener('click', closeModal)
+  }, [])
+
+  const openModal = type => {
+    setIsAuthorizing(type);
+    setTimeout(() => {
+      document
+        .getElementById('authModalWrapper')
+        .classList
+        .add(styles.open);
+    }, 50);
+  }
 
   return (
     <>
@@ -13,14 +40,14 @@ const SplashWrapper = ({ children }) => {
         <span>
           <button
             type="button"
-            onClick={() => setIsAuthorizing(true)}
+            onClick={() => openModal('login')}
           >
             Login
           </button>
 
           <button
             type="button"
-            onClick={() => setIsAuthorizing(true)}
+            onClick={() => openModal('register')}
           >
             Register
           </button>
@@ -28,12 +55,12 @@ const SplashWrapper = ({ children }) => {
       </nav>
 
       <section
-        id={styles.authModalWrapper}
-        className={`${isAuthorizing && 'open'}`}
-        onClick={() => setIsAuthorizing(false)}
+        id="authModalWrapper"
+        className={styles.authModalWrapper}
+        style={{ display: `${isAuthorizing !== null ? 'block' : 'none'}` }}
       >
-        <div id={styles.authModal} >
-          <h1>Hello World</h1>
+        <div className={styles.authModal}>
+          <h1>:Muse</h1>
         </div>
       </section>
 
@@ -41,7 +68,5 @@ const SplashWrapper = ({ children }) => {
     </>
   )
 }
-
-
 
 export default SplashWrapper;
