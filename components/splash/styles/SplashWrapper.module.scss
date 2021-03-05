@@ -22,13 +22,13 @@ nav.splashHeader {
     font-size: 1rem;
     padding: 7px 12px;
     cursor: pointer;
-    margin: 0 4px;
-    font-weight: bold;
+    margin: 0 2px;
     transition: 0.3s;
 
     &:last-of-type {
       border-radius: 5px;
       border: 2px solid black;
+      font-weight: bold;
 
       &:hover {
         background-color: white;
@@ -80,10 +80,8 @@ section.authModalWrapper {
 }
 
 main.splashContent {
-  width: 100vw;
+  max-width: 100vw;
   margin-top: $top_buffer;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
 }

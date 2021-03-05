@@ -35,7 +35,9 @@ const SplashWrapper = ({ children }) => {
   return (
     <>
       <nav className={styles.splashHeader}>
-        <h1>:Muse_UW</h1>
+        <span>
+          <h1>:Muse_UW</h1>
+        </span>
 
         <span>
           <button
