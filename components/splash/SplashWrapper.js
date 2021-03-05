@@ -40,16 +40,16 @@ const SplashWrapper = ({ children }) => {
         <span>
           <button
             type="button"
-            onClick={() => openModal('login')}
+            onClick={() => openModal('register')}
           >
-            Login
+            Register
           </button>
 
           <button
             type="button"
-            onClick={() => openModal('register')}
+            onClick={() => openModal('login')}
           >
-            Register
+            Login
           </button>
         </span>
       </nav>
@@ -64,7 +64,9 @@ const SplashWrapper = ({ children }) => {
         </div>
       </section>
 
-      {children}
+      <main className={styles.splashContent}>
+        {children}
+      </main>
     </>
   )
 }

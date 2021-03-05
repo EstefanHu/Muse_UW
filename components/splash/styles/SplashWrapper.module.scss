@@ -1,4 +1,6 @@
-@import "../../Variables.module.scss";
+@import "../../../styles/Variables.module.scss";
+
+$top_buffer: 55px;
 
 nav.splashHeader {
   display: flex;
@@ -7,18 +9,39 @@ nav.splashHeader {
   align-items: center;
   padding: 20px;
   width: 100vw;
-  height: 55px;
+  height: $top_buffer;
   position: fixed;
   top: 0;
   z-index: 10;
-  background-color: white;
+  background-color: $colorPrimary;
+  // box-shadow: 4px 4px 8px 8px rgba(0, 0, 0, 0.1);
+
+  button {
+    border: none;
+    background-color: transparent;
+    font-size: 1rem;
+    padding: 7px 12px;
+    cursor: pointer;
+    margin: 0 4px;
+    font-weight: bold;
+    transition: 0.3s;
+
+    &:last-of-type {
+      border-radius: 5px;
+      border: 2px solid black;
+
+      &:hover {
+        background-color: white;
+      }
+    }
+  }
 }
 
 section.authModalWrapper {
   width: 100vw;
   height: 100vh;
   z-index: 11;
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
@@ -54,4 +77,13 @@ section.authModalWrapper {
       user-select: none;
     }
   }
+}
+
+main.splashContent {
+  width: 100vw;
+  margin-top: $top_buffer;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }

@@ -1,5 +1,23 @@
-main.splashMain {
-  h1 {
-    color: red;
+@import "./Variables.module.scss";
+@import "./Splash.module.scss";
+
+section.splashHero {
+  background-color: $colorPrimary;
+
+  .heroText {
+    margin: 25vh auto 0;
+    text-align: center;
+
+    h1 {
+      font-size: 8vw;
+    }
+
+    p {
+      font-size: 3vw;
+    }
   }
+}
+
+section.splashWhat {
+  background-color: black;
 }

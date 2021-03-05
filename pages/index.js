@@ -12,9 +12,16 @@ const Index = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.splashMain}>
-        <h1>Index</h1>
-      </main>
+      <section className={`${styles.splashHero} ${styles.splashSection}`}>
+        <div className={styles.heroText}>
+          <h1>Projekt:Muse</h1>
+          <p>Experience the stories all around you</p>
+        </div>
+      </section>
+
+      <section className={`${styles.splashWhat} ${styles.splashSection}`}>
+        <h1>Hello</h1>
+      </section>
     </SplashWrapper>
   )
 }
