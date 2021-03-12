@@ -1,3 +1,4 @@
+import React from 'react'
 import Head from 'next/head'
 
 import SplashWrapper from '../components/splash/SplashWrapper';
@@ -8,14 +9,22 @@ const Index = () => {
   return (
     <SplashWrapper>
       <Head>
-        <title>:Muse_UW</title>
+        <title>:Muse</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <section className={`${styles.splashHero} ${styles.splashSection}`}>
         <div className={styles.heroText}>
-          <h1>Projekt:Muse</h1>
-          <p>Experience the stories all around you</p>
+          <div>
+            <span className={styles.strip}>
+              <h2>PRJKT:</h2>
+            </span>
+
+            <span>
+              <h1>Muse</h1>
+            </span>
+          </div>
+          <p>Experience the stories around you</p>
         </div>
       </section>
 

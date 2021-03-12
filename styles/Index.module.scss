@@ -1,6 +1,8 @@
 @import "./Variables.module.scss";
 @import "./Splash.module.scss";
 
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@700&display=swap');
+
 section.splashHero {
   background-color: $colorPrimary;
 
@@ -8,11 +10,38 @@ section.splashHero {
     margin: 25vh auto 0;
     text-align: center;
 
-    h1 {
-      font-size: 8vw;
+    div {
+      display: flex;
+      width: 100vw;
+
+      span {
+        height: 11vw;
+        display: flex;
+        align-items: center;
+        
+        &.strip {
+          background-color: black;
+          flex-direction: row-reverse;
+          padding-right: 0.5vw;
+          width: 40vw;
+          border-bottom-right-radius: 8px;
+          border-top-right-radius: 8px;
+        }
+
+        h2 {
+          color: $colorSecondary;
+          font-size: 1.5rem;
+          font-family: 'Source Code Pro', monospace;
+        }
+      }
+
+      h1 {
+        font-size: 10vw;
+      }
     }
 
     p {
+      margin-top: 15px;
       font-size: 3vw;
     }
   }

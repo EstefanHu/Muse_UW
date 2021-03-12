@@ -36,7 +36,7 @@ const SplashWrapper = ({ children }) => {
     <>
       <nav className={styles.splashHeader}>
         <span>
-          <h1>:Muse_UW</h1>
+          <h1>:Muse</h1>
         </span>
 
         <span>
