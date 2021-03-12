@@ -76,8 +76,8 @@ const SplashWrapper = ({ children }) => {
           </span>
           <h1 className={styles.backgroundText}>:Muse</h1>
 
-          {isAuthorizing === 'register' && <Register />}
-          {isAuthorizing === 'login' && <Login />}
+          {isAuthorizing === 'register' && <Register toggleView={() => setIsAuthorizing('login')} />}
+          {isAuthorizing === 'login' && <Login toggleView={() => setIsAuthorizing('register')} />}
         </div>
       </section>
 
@@ -88,7 +88,7 @@ const SplashWrapper = ({ children }) => {
   )
 }
 
-const Register = props => {
+const Register = ({ toggleView }) => {
   const [firstName, setFirstName] = React.useState('');
   const [lastName, setLastName] = React.useState('');
   const [email, setEmail] = React.useState('');
@@ -100,13 +100,47 @@ const Register = props => {
   }
 
   return (
-    <div>
+    <form onSubmit={handleSubmit}>
       <h2>Register</h2>
-    </div>
+
+      <span>
+        <label>Email Address:</label>
+        <input
+          type="text"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+        />
+      </span>
+
+      <span>
+        <label>Password:</label>
+        <input
+          type="password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+        />
+      </span>
+
+      <span>
+        <label>Confirm Password:</label>
+        <input
+          type="password"
+          value={confirm}
+          onChange={e => setConfirm(e.target.value)}
+        />
+      </span>
+
+      <input
+        type="submit"
+        value="Register"
+      />
+
+      <p>Already have an account? <a onClick={toggleView}>Log In.</a></p>
+    </form>
   )
 }
 
-const Login = props => {
+const Login = ({ toggleView }) => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
@@ -127,11 +161,11 @@ const Login = props => {
       </span>
 
       <span>
-        <label>Email Address:</label>
+        <label>Password:</label>
         <input
-          type="text"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
+          type="password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
         />
       </span>
 
@@ -139,6 +173,7 @@ const Login = props => {
         type="submit"
         value="Login"
       />
+      <p>Don't have an account? <a onClick={toggleView}>Create One</a></p>
     </form>
   )
 }
