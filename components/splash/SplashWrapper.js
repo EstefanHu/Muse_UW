@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 import styles from './styles/SplashWrapper.module.scss';
 
@@ -7,9 +8,10 @@ const SplashWrapper = ({ children }) => {
 
   React.useEffect(() => {
     const modal = document.getElementById('authModalWrapper')
+    const closeButton = document.getElementById('authModalCloseButton');
 
     const closeModal = e => {
-      if (e.target === modal) {
+      if (e.target === modal || e.target === closeButton) {
         modal.classList.remove(styles.open);
         setTimeout(() => {
           setIsAuthorizing(null)
@@ -18,8 +20,12 @@ const SplashWrapper = ({ children }) => {
     }
 
     modal.addEventListener('click', closeModal);
+    closeButton.addEventListener('click', closeModal);
 
-    return () => modal.removeEventListener('click', closeModal)
+    return () => {
+      modal.removeEventListener('click', closeModal);
+      closeButton.removeEventListener('click', closeModal);
+    }
   }, [])
 
   const openModal = type => {
@@ -62,7 +68,16 @@ const SplashWrapper = ({ children }) => {
         style={{ display: `${isAuthorizing !== null ? 'block' : 'none'}` }}
       >
         <div className={styles.authModal}>
-          <h1>:Muse</h1>
+          <span>
+            <Link href="request">
+              <a>Request Access</a>
+            </Link>
+            <p id="authModalCloseButton">&times;</p>
+          </span>
+          <h1 className={styles.backgroundText}>:Muse</h1>
+
+          {isAuthorizing === 'register' && <Register />}
+          {isAuthorizing === 'login' && <Login />}
         </div>
       </section>
 
@@ -70,6 +85,61 @@ const SplashWrapper = ({ children }) => {
         {children}
       </main>
     </>
+  )
+}
+
+const Register = props => {
+  const [firstName, setFirstName] = React.useState('');
+  const [lastName, setLastName] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [confirm, setConfirm] = React.useState('');
+
+  const handleSubmit = e => {
+    e.preventDefault();
+  }
+
+  return (
+    <div>
+      <h2>Register</h2>
+    </div>
+  )
+}
+
+const Login = props => {
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+
+  const handleSubmit = e => {
+    e.preventDefault();
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <h2>Login</h2>
+      <span>
+        <label>Email Address:</label>
+        <input
+          type="text"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+        />
+      </span>
+
+      <span>
+        <label>Email Address:</label>
+        <input
+          type="text"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+        />
+      </span>
+
+      <input
+        type="submit"
+        value="Login"
+      />
+    </form>
   )
 }
 

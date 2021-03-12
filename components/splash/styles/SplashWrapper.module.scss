@@ -67,14 +67,59 @@ section.authModalWrapper {
     transition: margin-left 0.3s ease;
     overflow: hidden;
     cursor: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
-    h1 {
+    & > span {
+      width: 100%;
+      margin: 15px 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+
+      a {
+        text-decoration: none;
+        font-size: 1rem;
+        text-transform: uppercase;
+        font-weight: bold;
+        color: rgb(184, 184, 184);
+        transition: 0.2s;
+        margin-top: 8px;
+
+        &:hover {
+          color: grey;
+        }
+      }
+
+      p {
+        color: grey;
+        cursor: pointer;
+        font-size: 2rem;
+        transition: 0.2s;
+
+        &:hover {
+          color: black;
+        }
+      }
+    }
+
+    .backgroundText {
       color: $colorPrimary;
+      opacity: 0.5;
       font-size: 20rem;
       position: absolute;
       transform: rotate(-90deg);
       bottom: 22rem;
       user-select: none;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
     }
   }
 }
